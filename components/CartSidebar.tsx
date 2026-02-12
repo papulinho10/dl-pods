@@ -91,11 +91,15 @@ Aguardo confirmação!`;
         }`}
       >
         
-        {/* Left Side "Street" Deco Strip */}
-        <div className="hidden md:flex flex-col w-8 h-full bg-yellow-400 items-center justify-center overflow-hidden relative border-r border-black">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-multiply"></div>
-            <div className="rotate-180 whitespace-nowrap text-black font-black text-xs tracking-[0.4em] animate-marquee" style={{ writingMode: 'vertical-rl' }}>
-               STREETWEAR // AUTHENTIC // DL PODS // NO FAKES // STREETWEAR // AUTHENTIC //
+        {/* Left Side "Street" Deco Strip - Enhanced with Caution Tape Pattern */}
+        <div className="hidden md:flex flex-col w-10 h-full bg-yellow-400 items-center justify-center overflow-hidden relative border-r-2 border-black">
+             {/* Caution Tape Pattern */}
+            <div className="absolute inset-0 opacity-20" style={{
+                backgroundImage: 'repeating-linear-gradient(45deg, #000, #000 10px, transparent 10px, transparent 20px)'
+            }}></div>
+            
+            <div className="rotate-180 whitespace-nowrap text-black font-black text-xs tracking-[0.4em] animate-marquee z-10 py-4" style={{ writingMode: 'vertical-rl' }}>
+               CAUTION // STREETWEAR ZONE // AUTHENTIC GOODS // DL PODS // NO ENTRY FOR FAKES //
             </div>
         </div>
 
