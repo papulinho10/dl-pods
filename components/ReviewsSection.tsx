@@ -38,7 +38,7 @@ const REVIEWS = [
 
 const ReviewsSection: React.FC = () => {
   return (
-    <section className="bg-street-black py-20 border-t border-white/10">
+    <section id="reviews" className="bg-street-black py-20 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 mb-12">
           <div>

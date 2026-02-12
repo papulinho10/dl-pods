@@ -1,11 +1,13 @@
 import React from 'react';
 import { ShoppingBag, Instagram, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const Navbar: React.FC = () => {
   const { toggleCart, cart } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -21,24 +23,53 @@ const Navbar: React.FC = () => {
     };
   }, [mobileMenuOpen]);
 
+  // Handle navigation and scrolling
+  const handleMenuClick = (target: string, isScroll: boolean = false) => {
+    setMobileMenuOpen(false);
+
+    if (isScroll) {
+      // If we are not on home, go home first
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait a bit for navigation to happen before scrolling
+        setTimeout(() => {
+          const element = document.getElementById(target);
+          if (element) element.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      } else {
+        // We are already on home, just scroll
+        const element = document.getElementById(target);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Standard navigation (e.g., to Shop)
+      navigate(target);
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-street-black/95 backdrop-blur-md border-b border-white/10 h-16 md:h-20 flex items-center">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-[60]">
+        <div className="flex justify-between items-center relative">
           
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden z-[60]">
+          {/* Mobile Menu Button - "3 Tracinhos" (Hamburger) */}
+          <div className="flex items-center md:hidden">
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white hover:text-yellow-400 transition-colors p-2 -ml-2 focus:outline-none relative z-[100]"
+              aria-label={mobileMenuOpen ? "Fechar Menu" : "Abrir Menu"}
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
 
           {/* Logo - Pulsing Border */}
-          <div className="flex-1 flex justify-center md:justify-start md:flex-none z-[60]">
-            <Link to="/" className="text-2xl md:text-3xl font-black tracking-tighter uppercase text-white border-2 border-white px-2 py-1 leading-none hover:bg-white hover:text-black transition-colors animate-neon-border">
+          <div className="flex-1 flex justify-center md:justify-start md:flex-none">
+            <Link 
+              to="/" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-2xl md:text-3xl font-black tracking-tighter uppercase text-white border-2 border-white px-2 py-1 leading-none hover:bg-white hover:text-black transition-colors animate-neon-border"
+            >
               DL PODS
             </Link>
           </div>
@@ -51,7 +82,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Right Icons (Instagram + Cart) */}
-          <div className="flex items-center gap-5 md:gap-6 z-[60]">
+          <div className="flex items-center gap-5 md:gap-6">
             <a 
               href="https://www.instagram.com/dl_podes/" 
               target="_blank" 
@@ -79,34 +110,46 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Full Screen Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-street-black z-50 flex flex-col justify-center items-center md:hidden transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-        <div className="flex flex-col space-y-8 text-center">
-            <Link 
-              to="/" 
-              onClick={() => setMobileMenuOpen(false)} 
+      {/* Increased blur to 3xl and opacity to 80% to reduce confusion */}
+      <div 
+        className={`fixed inset-0 w-screen h-screen bg-black/80 backdrop-blur-3xl z-[50] flex flex-col justify-center items-center md:hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+        }`}
+      >
+        <div className={`flex flex-col space-y-10 text-center w-full max-w-sm px-6 transition-all duration-500 transform ${mobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            
+            {/* 1. CATÁLOGO */}
+            <button 
+              onClick={() => handleMenuClick('/shop')}
               className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors animate-street-pulse"
             >
-              Início
-            </Link>
-            <Link 
-              to="/shop" 
-              onClick={() => setMobileMenuOpen(false)} 
+              Catálogo
+            </button>
+
+            {/* 2. AVALIAÇÕES */}
+            <button 
+              onClick={() => handleMenuClick('reviews', true)}
               className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors animate-street-pulse"
               style={{ animationDelay: '0.2s' }}
             >
-              Loja
-            </Link>
-            <Link 
-              to="/brands" 
-              onClick={() => setMobileMenuOpen(false)} 
+              Avaliações
+            </button>
+
+            {/* 3. CONTATO */}
+            <button 
+              onClick={() => handleMenuClick('contact', true)}
               className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors animate-street-pulse"
               style={{ animationDelay: '0.4s' }}
             >
-              Marcas
-            </Link>
+              Contato
+            </button>
         </div>
-        <div className="absolute bottom-10 w-full text-center">
-            <p className="text-gray-500 text-xs font-mono uppercase tracking-widest animate-pulse">Estilo Urbano // Vibe Autêntica</p>
+        
+        {/* Decorative footer inside menu */}
+        <div className={`absolute bottom-10 w-full text-center transition-opacity duration-700 delay-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
+            <p className="text-gray-400 text-xs font-mono uppercase tracking-widest">
+              Estilo Urbano // Vibe Autêntica
+            </p>
         </div>
       </div>
     </nav>
