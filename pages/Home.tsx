@@ -4,6 +4,7 @@ import BrandSection from '../components/BrandSection';
 import ProductCard from '../components/ProductCard';
 import ReviewsSection from '../components/ReviewsSection';
 import { PRODUCTS } from '../constants';
+import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   // Feature top 4 products
@@ -44,13 +45,10 @@ const Home: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4">
-          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none">
+        <div className="flex flex-col md:flex-row justify-center md:justify-start items-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none text-center md:text-left">
             Últimos <br className="md:hidden"/> Lançamentos
           </h2>
-          <a href="#/shop" className="text-yellow-400 hover:text-white uppercase tracking-widest text-xs md:text-sm font-bold border-b border-transparent hover:border-white transition-all pb-1 self-end md:self-auto">
-            Ver Catálogo Completo
-          </a>
         </div>
         
         {/* Mobile: 2 columns, Desktop: 4 columns */}
@@ -60,10 +58,15 @@ const Home: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center md:hidden">
-          <a href="#/shop" className="w-full block border border-white text-white py-4 uppercase tracking-widest text-sm font-bold hover:bg-white hover:text-black transition-colors">
-            Ver Todos
-          </a>
+        {/* View All Button - Visible on Mobile AND Desktop now */}
+        <div className="mt-16 text-center">
+          <Link to="/shop" className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-black tracking-widest text-white transition duration-300 ease-out border-2 border-white/30 rounded-sm shadow-md group">
+            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-yellow-400 group-hover:translate-x-0 ease">
+              <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </span>
+            <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease uppercase text-sm">Ver Todos Produtos</span>
+            <span className="relative invisible text-sm uppercase">Ver Todos Produtos</span>
+          </Link>
         </div>
       </section>
 
