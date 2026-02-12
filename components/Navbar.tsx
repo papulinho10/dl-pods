@@ -36,18 +36,18 @@ const Navbar: React.FC = () => {
             </button>
           </div>
 
-          {/* Logo */}
+          {/* Logo - Pulsing Border */}
           <div className="flex-1 flex justify-center md:justify-start md:flex-none z-[60]">
-            <Link to="/" className="text-2xl md:text-3xl font-black tracking-tighter uppercase text-white border-2 border-white px-2 py-1 leading-none hover:bg-white hover:text-black transition-colors">
+            <Link to="/" className="text-2xl md:text-3xl font-black tracking-tighter uppercase text-white border-2 border-white px-2 py-1 leading-none hover:bg-white hover:text-black transition-colors animate-neon-border">
               DL PODS
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 items-center ml-12">
-            <Link to="/" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Início</Link>
-            <Link to="/shop" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Loja</Link>
-            <Link to="/brands" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Marcas</Link>
+            <Link to="/" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors hover:animate-pulse">Início</Link>
+            <Link to="/shop" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors hover:animate-pulse">Loja</Link>
+            <Link to="/brands" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors hover:animate-pulse">Marcas</Link>
           </div>
 
           {/* Right Icons (Instagram + Cart) */}
@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
             >
               <ShoppingBag size={24} className="group-hover:scale-110 transition-transform" />
               {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-yellow-500 text-black text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/50">
+                <span className="absolute -top-1.5 -right-1.5 bg-yellow-500 text-black text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center shadow-[0_0_10px_rgba(234,179,8,0.8)] animate-bounce">
                   {cartCount}
                 </span>
               )}
@@ -84,27 +84,29 @@ const Navbar: React.FC = () => {
             <Link 
               to="/" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors"
+              className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors animate-street-pulse"
             >
               Início
             </Link>
             <Link 
               to="/shop" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors"
+              className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors animate-street-pulse"
+              style={{ animationDelay: '0.2s' }}
             >
               Loja
             </Link>
             <Link 
               to="/brands" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors"
+              className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors animate-street-pulse"
+              style={{ animationDelay: '0.4s' }}
             >
               Marcas
             </Link>
         </div>
         <div className="absolute bottom-10 w-full text-center">
-            <p className="text-gray-500 text-xs font-mono uppercase tracking-widest">Estilo Urbano // Vibe Autêntica</p>
+            <p className="text-gray-500 text-xs font-mono uppercase tracking-widest animate-pulse">Estilo Urbano // Vibe Autêntica</p>
         </div>
       </div>
     </nav>

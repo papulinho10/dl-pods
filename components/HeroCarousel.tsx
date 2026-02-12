@@ -6,10 +6,9 @@ const HeroCarousel: React.FC = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [currentTranslate, setCurrentTranslate] = useState(0);
-  const [prevTranslate, setPrevTranslate] = useState(0);
   
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>(0);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Auto-play logic (pauses if dragging)
   useEffect(() => {
@@ -17,7 +16,7 @@ const HeroCarousel: React.FC = () => {
 
     const timer = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 6000); // Slightly slower to allow pulse to finish a cycle
 
     return () => clearInterval(timer);
   }, [currentIndex, isDragging]);
@@ -41,7 +40,6 @@ const HeroCarousel: React.FC = () => {
     const pos = getPositionX(event);
     setStartX(pos);
     
-    // Disable transition during drag for instant follow
     if (containerRef.current) {
       containerRef.current.style.transition = 'none';
     }
@@ -51,18 +49,7 @@ const HeroCarousel: React.FC = () => {
     if (isDragging) {
       const currentPosition = getPositionX(event);
       const diff = currentPosition - startX;
-      // Calculate movement just for the visual drag effect
-      const move = diff; 
-      
-      // Apply transform manually for performance
-      if (containerRef.current) {
-        const offset = -currentIndex * 100;
-        // We use % for index, but pixels for drag. We need to convert pixel diff to approx percentage for the container style
-        // Or simpler: Use a calculated transform in the render, but here we update state
-        // Let's stick to updating a ref or state for the render loop if we want 60fps, 
-        // but React state is fine for this complexity.
-      }
-      setCurrentTranslate(move);
+      setCurrentTranslate(diff);
     }
   };
 
@@ -70,25 +57,24 @@ const HeroCarousel: React.FC = () => {
     setIsDragging(false);
     const movedBy = currentTranslate;
     
-    // Threshold to change slide (100px)
     if (movedBy < -100) {
       nextSlide();
     } else if (movedBy > 100) {
       prevSlide();
     }
 
-    // Reset drag offset
     setCurrentTranslate(0);
     
-    // Re-enable transition
     if (containerRef.current) {
       containerRef.current.style.transition = 'transform 0.5s ease-out';
     }
   };
 
   return (
-    // mt-16 (mobile navbar height) md:mt-20 (desktop navbar height) - FIXES THE GAP
-    <div className="relative w-full h-[55vh] md:h-[85vh] overflow-hidden bg-street-black mt-16 md:mt-20 border-b border-white/10 select-none">
+    <div 
+        ref={wrapperRef}
+        className="relative w-full h-[55vh] md:h-[85vh] overflow-hidden bg-street-black mt-16 md:mt-20 border-b border-white/10 select-none"
+    >
       
       {/* Slider Track */}
       <div 
@@ -110,23 +96,23 @@ const HeroCarousel: React.FC = () => {
         {BANNERS.map((banner, index) => (
           <div
             key={banner.id}
-            className="min-w-full h-full relative group"
+            className="min-w-full h-full relative group overflow-hidden"
           >
-            {/* Image with Grayscale Hover Effect */}
+            {/* Image - Pulsing Effect on Active Slide */}
             <img 
               src={banner.image} 
               alt={banner.title} 
-              className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-[2000ms] ease-in-out pointer-events-none"
+              className="w-full h-full object-cover object-center pointer-events-none"
+              style={{
+                // If it's the active slide, apply the pulse loop. Otherwise, stay B&W.
+                animation: index === currentIndex ? 'global-street-pulse 6s infinite ease-in-out' : 'none',
+                filter: index === currentIndex ? undefined : 'grayscale(100%) brightness(0.5)'
+              }}
               draggable={false}
             />
             
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-
-            {/* Text Content (Optional - if you want it to appear on hover or always) */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                {/* Keeping it clean as requested, but structure is here if needed */}
-            </div>
           </div>
         ))}
       </div>
@@ -137,17 +123,11 @@ const HeroCarousel: React.FC = () => {
           <div
             key={index}
             className={`h-1.5 rounded-full transition-all duration-300 shadow-sm ${
-              index === currentIndex ? 'bg-yellow-400 w-8' : 'bg-white/50 w-4'
+              index === currentIndex ? 'bg-yellow-400 w-8 animate-neon-border' : 'bg-white/50 w-4'
             }`}
           />
         ))}
       </div>
-      
-      {/* Drag Hint (Optional) */}
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 opacity-0 md:opacity-50 pointer-events-none">
-         <p className="text-[10px] text-white uppercase tracking-widest animate-pulse">Arraste para navegar</p>
-      </div>
-
     </div>
   );
 };
