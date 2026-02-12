@@ -12,7 +12,7 @@ const CartSidebar: React.FC = () => {
   // Constants
   const SHIPPING_GRAMADO = 20;
   const SHIPPING_CANELA = 10;
-  const WHATSAPP_NUMBER = "5554999999999"; // Substitua pelo número real da loja
+  const WHATSAPP_NUMBER = "5554981557945"; // Número atualizado
 
   // Prevent background scrolling when cart is open
   React.useEffect(() => {
@@ -42,10 +42,11 @@ const CartSidebar: React.FC = () => {
   const handleCheckout = () => {
     if (!isCheckoutEnabled) return;
 
-    // Format items list
-    const itemsList = cart.map(item => 
-      `▪️ *${item.quantity}x ${item.name}*\n   Model: ${item.brand}\n   Valor: R$ ${(item.price * item.quantity).toFixed(2)}`
-    ).join('\n\n');
+    // Format items list with flavor
+    const itemsList = cart.map(item => {
+        const flavorStr = item.selectedFlavor ? `   Sabor: ${item.selectedFlavor}\n` : '';
+        return `▪️ *${item.quantity}x ${item.name}*\n${flavorStr}   Valor: R$ ${(item.price * item.quantity).toFixed(2)}`;
+    }).join('\n\n');
 
     // Format delivery info
     let deliveryInfo = "";
@@ -137,7 +138,7 @@ Aguardo confirmação!`;
                     {/* Cart Items */}
                     <div className="space-y-4">
                     {cart.map((item) => (
-                        <div key={item.id} className="flex gap-4 bg-white/5 p-3 rounded-sm border border-transparent hover:border-yellow-400/30 transition-colors group">
+                        <div key={`${item.id}-${item.selectedFlavor}`} className="flex gap-4 bg-white/5 p-3 rounded-sm border border-transparent hover:border-yellow-400/30 transition-colors group">
                         <div className="w-20 h-24 bg-street-gray flex-shrink-0 relative overflow-hidden border border-white/5">
                             <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                         </div>
@@ -146,13 +147,20 @@ Aguardo confirmação!`;
                             <div className="flex justify-between items-start">
                                 <h3 className="text-white font-bold uppercase text-xs md:text-sm leading-tight pr-2">{item.name}</h3>
                                 <button 
-                                onClick={() => removeFromCart(item.id)}
+                                onClick={() => removeFromCart(item.id, item.selectedFlavor)}
                                 className="text-gray-500 hover:text-red-500 transition-colors"
                                 >
                                 <Trash2 size={16} />
                                 </button>
                             </div>
-                            <p className="text-gray-400 text-[10px] uppercase tracking-wider mt-1">{item.brand}</p>
+                            <div className="flex flex-col mt-1">
+                                <p className="text-gray-400 text-[10px] uppercase tracking-wider">{item.brand}</p>
+                                {item.selectedFlavor && (
+                                    <p className="text-yellow-400 text-[10px] uppercase font-bold tracking-wider mt-0.5">
+                                        Sabor: {item.selectedFlavor}
+                                    </p>
+                                )}
+                            </div>
                             </div>
                             <div className="flex justify-between items-end">
                             <div className="flex items-center gap-3 bg-black/40 px-2 py-1 rounded-sm border border-white/5">

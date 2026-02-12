@@ -7,10 +7,12 @@ export interface Product {
   images: string[];
   description: string;
   category: string;
+  flavors?: string[];
 }
 
 export interface CartItem extends Product {
   quantity: number;
+  selectedFlavor?: string;
 }
 
 export interface Brand {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
 import { useCart } from '../context/CartContext';
-import { ArrowLeft, Share2, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowLeft, ShieldCheck, Truck } from 'lucide-react';
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -10,6 +10,7 @@ const ProductDetails: React.FC = () => {
   const { addToCart } = useCart();
   
   const [activeImage, setActiveImage] = useState<string>('');
+  const [selectedFlavor, setSelectedFlavor] = useState<string | null>(null);
 
   // Set initial active image when product loads
   useEffect(() => {
@@ -27,24 +28,43 @@ const ProductDetails: React.FC = () => {
     );
   }
 
+  const hasFlavors = product.flavors && product.flavors.length > 0;
+  const canAddToCart = !hasFlavors || selectedFlavor !== null;
+
+  // Custom parser for Bold Headers
+  const renderDescription = (text: string) => {
+    const keywords = [
+      "DESCRIÇÃO", 
+      "Fluxo de ar regulável", 
+      "Autonomia", 
+      "Passo a passo de uso", 
+      "ESPECIFICAÇÕES"
+    ];
+    
+    // Create a regex to split the text by these keywords
+    const regex = new RegExp(`(${keywords.join('|')})`, 'g');
+    const parts = text.split(regex);
+
+    return parts.map((part, index) => {
+      if (keywords.includes(part)) {
+        return (
+          <strong key={index} className="block text-yellow-400 font-black uppercase tracking-wider mt-6 mb-2 text-sm md:text-base border-l-2 border-yellow-400 pl-3">
+            {part}
+          </strong>
+        );
+      }
+      return <span key={index}>{part}</span>;
+    });
+  };
+
   return (
     <div className="min-h-screen bg-street-black pt-20 md:pt-28 pb-20 overflow-x-hidden">
       
-      {/* CSS Animatinos for Smoke & Float */}
+      {/* CSS Animations for Float only (Smoke removed) */}
       <style>{`
-        @keyframes smoke-exhale {
-          0% { background-position: 0% 50%; opacity: 0.3; }
-          50% { background-position: 100% 50%; opacity: 0.6; }
-          100% { background-position: 0% 50%; opacity: 0.3; }
-        }
         @keyframes float-y {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
-        }
-        .smoke-bg-animated {
-          background: linear-gradient(90deg, rgba(50,50,50,0) 0%, rgba(200,200,200,0.1) 50%, rgba(50,50,50,0) 100%);
-          background-size: 200% 200%;
-          animation: smoke-exhale 8s ease infinite;
         }
       `}</style>
 
@@ -62,51 +82,29 @@ const ProductDetails: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20">
           
-          {/* --- Image Section with Smoke Effect --- */}
-          <div className="flex flex-col gap-4">
+          {/* --- Image Section --- */}
+          <div className="flex flex-col gap-4 items-center lg:items-start">
             {/* Main Composition Container */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-white/10 bg-street-dark group shadow-2xl">
-               
-               {/* 1. The Smoke Background (Abstract) */}
-               <div className="absolute inset-0 z-0">
-                 <img 
-                   src="https://images.unsplash.com/photo-1513262615418-500b3e55c3c0?q=80&w=2070&auto=format&fit=crop" 
-                   alt="Smoke Atmosphere" 
-                   className="w-full h-full object-cover grayscale contrast-125 brightness-100 opacity-50 mix-blend-color-dodge"
-                 />
-                 {/* Vignette Overlay */}
-                 <div className="absolute inset-0 bg-radial-gradient from-transparent via-street-black/40 to-street-black/90"></div>
-               </div>
-
-               {/* 2. Animated Smoke Clouds Layer */}
-               <div className="absolute inset-0 z-10 smoke-bg-animated mix-blend-overlay pointer-events-none"></div>
-               <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-street-black/80 to-transparent z-10"></div>
+            <div className="relative w-full max-w-[400px] h-auto overflow-hidden rounded-sm border border-white/10 bg-street-dark group shadow-2xl">
                
                {/* 3. The Product Image (Floating) */}
-               <div className="absolute inset-0 z-20 flex items-center justify-center p-8 md:p-12">
+               <div className="relative z-20 p-4">
                  <img 
                    src={activeImage || product.image} 
                    alt={product.name} 
-                   className="w-full h-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] animate-[float-y_6s_ease-in-out_infinite] transition-transform duration-500 group-hover:scale-110"
+                   className="w-full h-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] animate-[float-y_6s_ease-in-out_infinite] transition-transform duration-500 group-hover:scale-105"
                  />
-               </div>
-
-               {/* Share Button */}
-               <div className="absolute top-4 right-4 z-30">
-                  <button className="p-2 bg-black/50 backdrop-blur-sm border border-white/10 hover:border-yellow-400 text-white hover:text-yellow-400 rounded-full transition-colors">
-                    <Share2 size={18} />
-                  </button>
                </div>
             </div>
 
             {/* Thumbnail Gallery */}
             {product.images && product.images.length > 0 && (
-              <div className="flex overflow-x-auto gap-3 pb-2 hide-scrollbar md:grid md:grid-cols-4 md:gap-4 md:pb-0">
+              <div className="flex overflow-x-auto gap-3 pb-2 hide-scrollbar md:grid md:grid-cols-4 md:gap-4 md:pb-0 max-w-[400px]">
                 {product.images.map((img, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveImage(img)}
-                    className={`relative flex-shrink-0 w-20 h-24 md:w-auto md:h-auto aspect-[4/5] bg-street-gray overflow-hidden border-2 transition-all duration-300 rounded-sm group ${
+                    className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 aspect-square bg-street-gray overflow-hidden border-2 transition-all duration-300 rounded-sm group ${
                       activeImage === img 
                         ? 'border-yellow-400 opacity-100' 
                         : 'border-transparent opacity-50 hover:opacity-100 hover:border-white/20'
@@ -115,7 +113,7 @@ const ProductDetails: React.FC = () => {
                     <img 
                       src={img} 
                       alt={`${product.name} view ${index + 1}`} 
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                      className="w-full h-full object-contain p-1 grayscale group-hover:grayscale-0 transition-all"
                     />
                   </button>
                 ))}
@@ -124,9 +122,9 @@ const ProductDetails: React.FC = () => {
           </div>
 
           {/* Details Section */}
-          <div className="flex flex-col justify-center relative">
+          <div className="flex flex-col relative">
             
-            {/* Decorative Smoke behind text (Subtle) */}
+            {/* Decorative Smoke behind text (Subtle) - Kept this as it is outside the image container */}
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-400/5 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="border-b border-white/10 pb-6 mb-6 relative z-10">
@@ -141,34 +139,68 @@ const ProductDetails: React.FC = () => {
                    )}
                 </div>
                 
-                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-4 leading-none drop-shadow-lg">
+                <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white mb-6 leading-none drop-shadow-lg">
                 {product.name}
                 </h1>
+
+                {/* --- FLAVOR SELECTION (Below Title) --- */}
+                {hasFlavors && (
+                  <div className="mb-8">
+                    <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-3">Escolha o Sabor:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {product.flavors?.map((flavor) => (
+                        <button
+                          key={flavor}
+                          onClick={() => setSelectedFlavor(flavor)}
+                          className={`px-4 py-2 text-xs font-bold uppercase tracking-wider border rounded-sm transition-all duration-300 ${
+                            selectedFlavor === flavor 
+                              ? 'border-yellow-400 bg-yellow-400 text-black shadow-[0_0_15px_rgba(250,204,21,0.4)]' 
+                              : 'border-white/20 text-gray-400 hover:border-white hover:text-white'
+                          }`}
+                        >
+                          {flavor}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 
-                <div className="flex items-end gap-4">
-                  <p className="text-3xl md:text-4xl font-mono text-white font-bold">
-                  ${product.price.toFixed(2)}
-                  </p>
-                  <p className="text-gray-500 text-xs uppercase tracking-widest mb-2 font-bold">
-                    Em até 3x sem juros
-                  </p>
+                {/* --- PRICE & ADD TO CART --- */}
+                <div className="bg-white/5 p-6 rounded-sm border border-white/5">
+                    <div className="flex items-end gap-4 mb-4">
+                        <p className="text-3xl md:text-4xl font-mono text-white font-bold">
+                        ${product.price.toFixed(2)}
+                        </p>
+                    </div>
+
+                    {/* Add to Cart Button */}
+                    <button
+                        onClick={() => {
+                            if (canAddToCart) {
+                                addToCart(product, selectedFlavor || undefined);
+                            }
+                        }}
+                        disabled={!canAddToCart}
+                        className={`relative w-full py-4 md:py-5 text-sm md:text-base font-black uppercase tracking-[0.2em] transition-all rounded-sm overflow-hidden group 
+                        ${canAddToCart 
+                            ? 'bg-white text-black hover:bg-yellow-400 hover:text-black cursor-pointer' 
+                            : 'bg-white/10 text-gray-500 cursor-not-allowed border border-white/10'
+                        }`}
+                    >
+                        <span className="relative z-10">
+                            {hasFlavors && !selectedFlavor ? "Selecione um Sabor" : "Adicionar ao Carrinho"}
+                        </span>
+                        {canAddToCart && (
+                            <div className="absolute inset-0 bg-yellow-400 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                        )}
+                    </button>
                 </div>
             </div>
 
-            <div className="prose prose-invert mb-8 relative z-10">
-              <p className="text-gray-300 leading-relaxed text-sm md:text-base font-medium">
-                {product.description}
-              </p>
+            {/* Description Parsed */}
+            <div className="prose prose-invert mb-8 relative z-10 text-gray-300 leading-relaxed text-sm md:text-base font-medium whitespace-pre-wrap">
+              {renderDescription(product.description)}
             </div>
-
-            {/* Add to Cart */}
-            <button
-              onClick={() => addToCart(product)}
-              className="relative w-full py-4 md:py-5 text-sm md:text-base font-black uppercase tracking-[0.2em] transition-all rounded-sm bg-white text-black hover:bg-yellow-400 hover:text-black overflow-hidden group mb-8"
-            >
-              <span className="relative z-10">Adicionar ao Carrinho</span>
-              <div className="absolute inset-0 bg-yellow-400 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
-            </button>
             
             <div className="grid grid-cols-2 gap-4">
                <div className="flex items-center gap-4 border border-white/5 p-4 bg-white/5 rounded-sm hover:bg-white/10 transition-colors">

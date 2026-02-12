@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
               <a href="https://www.instagram.com/dl_podes/" target="_blank" rel="noreferrer" className="w-10 h-10 border border-white/20 flex items-center justify-center text-white hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all">
                 <Instagram size={18} />
               </a>
-              <a href="https://wa.me/" target="_blank" rel="noreferrer" className="w-10 h-10 border border-white/20 flex items-center justify-center text-white hover:bg-green-500 hover:text-black hover:border-green-500 transition-all">
+              <a href="https://wa.me/5554981557945" target="_blank" rel="noreferrer" className="w-10 h-10 border border-white/20 flex items-center justify-center text-white hover:bg-green-500 hover:text-black hover:border-green-500 transition-all">
                 <MessageCircle size={18} />
               </a>
             </div>
