@@ -3,8 +3,8 @@ import { CartItem, Product } from '../types';
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: Product, size: string) => void;
-  removeFromCart: (productId: string, size: string) => void;
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: string) => void;
   toggleCart: () => void;
   isCartOpen: boolean;
   cartTotal: number;
@@ -16,23 +16,23 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const addToCart = (product: Product, size: string) => {
+  const addToCart = (product: Product) => {
     setCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id && item.selectedSize === size);
+      const existing = prev.find((item) => item.id === product.id);
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id && item.selectedSize === size
+          item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      return [...prev, { ...product, quantity: 1, selectedSize: size }];
+      return [...prev, { ...product, quantity: 1 }];
     });
     setIsCartOpen(true);
   };
 
-  const removeFromCart = (productId: string, size: string) => {
-    setCart((prev) => prev.filter((item) => !(item.id === productId && item.selectedSize === size)));
+  const removeFromCart = (productId: string) => {
+    setCart((prev) => prev.filter((item) => item.id !== productId));
   };
 
   const toggleCart = () => setIsCartOpen(!isCartOpen);

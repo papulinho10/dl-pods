@@ -21,7 +21,6 @@ export const PRODUCTS: Product[] = [
       'https://picsum.photos/seed/vape1_pkg/600/800'
     ],
     description: 'O clássico V50 com sabor refrescante de menta. Design ergonômico e acabamento premium.',
-    sizes: ['5000 Puffs'],
     category: 'Descartáveis'
   },
   {
@@ -37,7 +36,6 @@ export const PRODUCTS: Product[] = [
       'https://picsum.photos/seed/vape2_box/600/800'
     ],
     description: 'Magic Maze Pro com controle de fluxo de ar e visor de bateria. Sabor intenso de frutas vermelhas.',
-    sizes: ['10000 Puffs'],
     category: 'Pod System'
   },
   {
@@ -53,7 +51,6 @@ export const PRODUCTS: Product[] = [
       'https://picsum.photos/seed/vape3_detail/600/800'
     ],
     description: 'Tecnologia Touch inovadora. O BC10000 entrega consistência do início ao fim.',
-    sizes: ['10000 Puffs'],
     category: 'Descartáveis'
   },
   {
@@ -69,7 +66,6 @@ export const PRODUCTS: Product[] = [
       'https://picsum.photos/seed/vape4_fit/600/800'
     ],
     description: 'Design elegante e compacto. O MO5000 oferece uma experiência suave com mesh coil.',
-    sizes: ['5000 Puffs'],
     category: 'Descartáveis'
   },
   {
@@ -85,7 +81,6 @@ export const PRODUCTS: Product[] = [
       'https://picsum.photos/seed/vape5_d/600/800'
     ],
     description: 'A evolução do V50. Mais bateria, mais sabor e design exclusivo Ignite.',
-    sizes: ['8000 Puffs'],
     category: 'Descartáveis'
   },
   {
@@ -101,7 +96,6 @@ export const PRODUCTS: Product[] = [
       'https://picsum.photos/seed/vape6_hood/600/800'
     ],
     description: 'G8000 traz um corpo transparente e lanyard incluso. Estilo e praticidade.',
-    sizes: ['8000 Puffs'],
     category: 'Descartáveis'
   }
 ];
@@ -121,7 +115,7 @@ export const BANNERS = [
   },
   {
     id: 3,
-    image: 'https://picsum.photos/seed/banner3/1920/800',
+    image: 'https://i.postimg.cc/xjbFwd8n/banner-pods3.jpg',
     title: "ESSENCIAIS",
     subtitle: "USO DIÁRIO"
   }
