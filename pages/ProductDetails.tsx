@@ -140,7 +140,7 @@ const ProductDetails: React.FC = () => {
                 </div>
                 
                 <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white mb-6 leading-none drop-shadow-lg">
-                {product.name}
+                {product.longName || product.name}
                 </h1>
 
                 {/* --- FLAVOR SELECTION (Below Title) --- */}

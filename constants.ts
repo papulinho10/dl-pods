@@ -11,6 +11,7 @@ export const PRODUCTS: Product[] = [
   {
     id: '1',
     name: 'V-MIX 40K',
+    longName: 'Pod Descartável V-MIX 40K - 40000 Puffs | - 50mg/mL',
     brand: 'Ignite',
     price: 135.00,
     image: 'https://i.postimg.cc/bN7t04mn/Chat-GPT-Image-12-de-fev-de-2026-16-57-36.png',
