@@ -38,11 +38,23 @@ const ProductDetails: React.FC = () => {
       "Fluxo de ar regulável", 
       "Autonomia", 
       "Passo a passo de uso", 
-      "ESPECIFICAÇÕES"
+      "ESPECIFICAÇÕES",
+      "Design com tela LED incorporada",
+      "Funções do MO 20000 Pro",
+      "Perfil e Características",
+      "Benefícios e Diferenciais",
+      "Como Usar",
+      "Por que escolher o Pod Descartável Elf Bar BC45K Pro?",
+      "Alta durabilidade e recarga rápida",
+      "Tanque interno com grande volume de juice",
+      "Desempenho suave e vapor estável",
+      "Destaques do Ignite V300"
     ];
     
     // Create a regex to split the text by these keywords
-    const regex = new RegExp(`(${keywords.join('|')})`, 'g');
+    // We escape special characters like '?' to avoid regex errors
+    const safeKeywords = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const regex = new RegExp(`(${safeKeywords.join('|')})`, 'g');
     const parts = text.split(regex);
 
     return parts.map((part, index) => {
