@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Product } from '../types';
 
@@ -10,6 +10,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // Random delay for organic feel so they don't pulse in sync
+  const animationDelay = useMemo(() => `${Math.random() * 5}s`, []);
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -33,11 +36,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-radial-gradient from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-            {/* Image */}
+            {/* Image - Pulsing Effect */}
             <img 
               src={product.image} 
               alt={product.name} 
-              className="w-full h-full object-contain p-6 md:p-8 grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110 drop-shadow-xl"
+              className="w-full h-full object-contain p-6 md:p-8 animate-street-pulse drop-shadow-xl"
+              style={{ animationDelay }}
             />
             
             {/* Corner Accents */}

@@ -99,12 +99,12 @@ const ProductDetails: React.FC = () => {
             {/* Main Composition Container */}
             <div className="relative w-full max-w-[400px] h-auto overflow-hidden rounded-sm border border-white/10 bg-street-dark group shadow-2xl">
                
-               {/* 3. The Product Image (Floating) */}
-               <div className="relative z-20 p-4">
+               {/* 3. The Product Image (Floating Container + Pulsing Image) */}
+               <div className="relative z-20 p-4 animate-[float-y_6s_ease-in-out_infinite]">
                  <img 
                    src={activeImage || product.image} 
                    alt={product.name} 
-                   className="w-full h-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] animate-[float-y_6s_ease-in-out_infinite] transition-transform duration-500 group-hover:scale-105"
+                   className="w-full h-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] animate-street-pulse"
                  />
                </div>
             </div>
