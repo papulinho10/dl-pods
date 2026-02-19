@@ -35,7 +35,10 @@ const BrandItem: React.FC<{ brand: Brand; index: number }> = ({ brand, index }) 
       <div 
         className="absolute inset-0 bg-white/5 border border-white/5 backdrop-blur-md rounded-sm shadow-[0_0_30px_rgba(0,0,0,0.8)] transition-all"
         style={{
-            animation: isVisible ? `card-pulse 3s infinite ease-in-out` : 'none',
+            animationName: isVisible ? 'card-pulse' : 'none',
+            animationDuration: '3s',
+            animationIterationCount: 'infinite',
+            animationTimingFunction: 'ease-in-out',
             animationDelay: `${index * 0.4}s`
         }}
       ></div>
@@ -44,7 +47,10 @@ const BrandItem: React.FC<{ brand: Brand; index: number }> = ({ brand, index }) 
       <div 
         className="absolute inset-0 bg-radial-gradient from-white/20 to-transparent opacity-0"
         style={{
-            animation: isVisible ? `glow-pulse 3s infinite ease-in-out` : 'none',
+            animationName: isVisible ? 'glow-pulse' : 'none',
+            animationDuration: '3s',
+            animationIterationCount: 'infinite',
+            animationTimingFunction: 'ease-in-out',
             animationDelay: `${index * 0.4}s`
         }}
       ></div>
@@ -54,7 +60,10 @@ const BrandItem: React.FC<{ brand: Brand; index: number }> = ({ brand, index }) 
         className="relative z-10 w-20 md:w-32 h-20 md:h-32 p-3"
         style={{
             // Se visível, aplica a animação. Se não, estado estático B&W.
-            animation: isVisible ? `street-pulse 3s infinite ease-in-out` : 'none',
+            animationName: isVisible ? 'street-pulse' : 'none',
+            animationDuration: '3s',
+            animationIterationCount: 'infinite',
+            animationTimingFunction: 'ease-in-out',
             // Delay escalonado para criar efeito de "luzes da cidade"
             animationDelay: `${index * 0.4}s`,
             // Estado inicial fixo (para quando não estiver animando ou antes do delay)

@@ -5,33 +5,33 @@ const REVIEWS = [
   {
     id: 1,
     name: "Pedro Santos",
-    handle: "@pedro_s",
-    text: "A qualidade do produto é absurda. Sabor muito intenso e a bateria dura demais. Chegou em 2 dias em SP.",
+    handle: "Canela - RS",
+    text: "Qualidade absurda! O produto veio lacrado, tudo certinho na caixinha. A entrega aqui em Canela foi super rápida. Recomendo demais!",
     rating: 5,
     date: "HÁ 2 DIAS"
   },
   {
     id: 2,
     name: "Mariana Costa",
-    handle: "@mari.c",
-    text: "Melhor loja de pods do Brasil. Comprei o Elfbar e veio original com verificação. Atendimento no insta foi 10/10.",
+    handle: "Gramado - RS",
+    text: "Melhor loja da região! Comprei o Elfbar e chegou rapidinho aqui em Gramado. Atendimento nota 10, respondem na hora.",
     rating: 5,
     date: "HÁ 1 SEMANA"
   },
   {
     id: 3,
     name: "Lucas Oliveira",
-    handle: "@lucas_o",
-    text: "Peças originais e envio rápido. O Ignite veio lacrado certinho. Virei cliente fiel da DL PODS.",
+    handle: "Canela - RS",
+    text: "Virei cliente fiel. Peças originais, tudo muito bem embalado. O tempo de resposta deles é impressionante e a entrega voa!",
     rating: 5,
     date: "HÁ 2 SEMANAS"
   },
   {
     id: 4,
     name: "Julia Martins",
-    handle: "@juju_m",
-    text: "Estética da loja é muito braba e os produtos condizem com as fotos. Recomendo demais pra quem curte.",
-    rating: 4,
+    handle: "Gramado - RS",
+    text: "Estética da loja é braba e os produtos são de qualidade mesmo. Chegou tudo certinho e muito rápido. Podem confiar!",
+    rating: 5,
     date: "HÁ 3 SEMANAS"
   }
 ];

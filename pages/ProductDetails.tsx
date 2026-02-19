@@ -48,7 +48,24 @@ const ProductDetails: React.FC = () => {
       "Alta durabilidade e recarga rápida",
       "Tanque interno com grande volume de juice",
       "Desempenho suave e vapor estável",
-      "Destaques do Ignite V300"
+      "Destaques do Ignite V300",
+      // New Subtitles
+      "Especificações do Produto – SEX ADDICT BY DAN BILZERIAN S280",
+      "Controle total da experiência de sabor",
+      "Energia estável e carregamento eficiente",
+      "Resistências otimizadas para vapor equilibrado",
+      "Design funcional e conforto no uso",
+      "Destaques:",
+      "ESPECIFICAÇÕES:",
+      "Desempenho de Alta Qualidade e Longa Duração",
+      "Design Moderno e Portátil",
+      "Destaques do Pod Descartável OxBar G Prime",
+      "Especificações Técnicas",
+      "Características Técnicas:",
+      "Modos de Saída:",
+      "Perfis de sabor descartáveis da Dinner Lady 50K:",
+      "Especificações do produto:",
+      "Características do produto:"
     ];
     
     // Create a regex to split the text by these keywords

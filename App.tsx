@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import Navbar from './components/Navbar';
 import CartSidebar from './components/CartSidebar';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetails from './pages/ProductDetails';
@@ -22,7 +23,7 @@ const App: React.FC = () => {
     <CartProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen bg-street-black text-white font-sans selection:bg-yellow-400 selection:text-black flex flex-col">
+        <div className="min-h-screen bg-street-black text-white font-sans selection:bg-yellow-400 selection:text-black flex flex-col relative">
           <Navbar />
           <CartSidebar />
           <div className="flex-grow">
@@ -34,6 +35,7 @@ const App: React.FC = () => {
             </Routes>
           </div>
           <Footer />
+          <WhatsAppButton />
         </div>
       </Router>
     </CartProvider>

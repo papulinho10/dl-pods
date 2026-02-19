@@ -72,6 +72,11 @@
         50% { text-shadow: 0 0 10px rgba(234, 179, 8, 0.8); color: #facc15; }
       }
 
+      @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
       /* Utility classes for animations */
       .animate-street-pulse {
         animation: global-street-pulse 4s infinite ease-in-out;
@@ -81,6 +86,9 @@
       }
       .animate-text-glow {
         animation: text-glow-pulse 3s infinite ease-in-out;
+      }
+      .animate-bounce-slow {
+        animation: bounce-slow 3s infinite ease-in-out;
       }
     </style>
   <script type="importmap">
