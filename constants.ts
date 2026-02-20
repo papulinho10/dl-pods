@@ -160,7 +160,7 @@ ESPECIFICAÇÕES
     name: 'OxBar G Prime',
     longName: 'Pod Descartável OxBar G Prime - 25.000 Puffs',
     brand: 'Oxbar',
-    price: 130.00,
+    price: 120.00,
     image: 'https://i.postimg.cc/G2rfHZfR/oxbar-25k.webp',
     images: [
       'https://i.postimg.cc/G2rfHZfR/oxbar-25k.webp',
@@ -403,7 +403,7 @@ Especificações do Produto – SEX ADDICT BY DAN BILZERIAN S280
     name: 'Dinner Lady 50K',
     longName: 'Pod Descartável Dinner Lady 50K - 50000 Puffs',
     brand: 'Dinner Lady',
-    price: 250.00,
+    price: 240.00,
     image: 'https://i.postimg.cc/j5mN1DF7/Chat-GPT-Image-20-de-fev-de-2026-02-06-47.png',
     images: [
       'https://i.postimg.cc/j5mN1DF7/Chat-GPT-Image-20-de-fev-de-2026-02-06-47.png',
@@ -500,10 +500,10 @@ Características Técnicas:
   // 8. Black Sheep
   {
     id: '16',
-    name: 'Dual Tank 30K',
+    name: 'Black Sheep 30K',
     longName: 'Pod Descartável 30K Dual Tank - 30000 puffs - Black Sheep',
     brand: 'Black Sheep',
-    price: 180.00, // Estimated price as it wasn't provided, adjust if needed
+    price: 150.00, // Estimated price as it wasn't provided, adjust if needed
     image: 'https://i.postimg.cc/SRmqkr5V/black-sheep-1.webp',
     images: [
       'https://i.postimg.cc/SRmqkr5V/black-sheep-1.webp',

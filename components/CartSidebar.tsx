@@ -220,7 +220,6 @@ Aguardo confirmação!`;
                             }`}
                         >
                             <span>Gramado</span>
-                            <span className="font-mono">R$ 20,00</span>
                         </button>
                         <button
                             onClick={() => setDeliveryCity('canela')}
@@ -231,9 +230,13 @@ Aguardo confirmação!`;
                             }`}
                         >
                             <span>Canela</span>
-                            <span className="font-mono">R$ 10,00</span>
                         </button>
                         </div>
+                        {deliveryCity && (
+                            <p className="text-[10px] text-yellow-400 font-bold uppercase tracking-wider mt-2 text-center animate-pulse">
+                                Valor do frete a combinar
+                            </p>
+                        )}
                     </div>
                     </div>
                 </>
@@ -250,13 +253,13 @@ Aguardo confirmação!`;
                 </div>
                 <div className="flex justify-between text-gray-400 text-xs font-bold uppercase tracking-wider">
                 <span>Frete</span>
-                <span className={`font-mono ${shippingCost > 0 ? 'text-yellow-400' : 'text-white'}`}>
-                    {deliveryType === 'pickup' ? 'GRÁTIS' : deliveryType === null ? '--' : `$${shippingCost.toFixed(2)}`}
+                <span className={`font-mono ${deliveryCity ? 'text-yellow-400' : 'text-white'}`}>
+                    {deliveryType === 'pickup' ? 'GRÁTIS' : deliveryCity ? 'A COMBINAR' : '--'}
                 </span>
                 </div>
                 <div className="flex justify-between text-white font-black uppercase tracking-wider text-base md:text-lg pt-2 border-t border-white/10">
                 <span>Total</span>
-                <span className="font-mono text-yellow-400">${finalTotal.toFixed(2)}</span>
+                <span className="font-mono text-yellow-400">${cartTotal.toFixed(2)}</span>
                 </div>
             </div>
 
