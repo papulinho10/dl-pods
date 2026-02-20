@@ -5,10 +5,14 @@ import ProductCard from '../components/ProductCard';
 import ReviewsSection from '../components/ReviewsSection';
 import { PRODUCTS } from '../constants';
 import { Link } from 'react-router-dom';
+import { MessageCircle, Instagram } from 'lucide-react';
 
 const Home: React.FC = () => {
-  // Feature top 4 products
-  const featuredProducts = PRODUCTS.slice(0, 4);
+  // Feature top products in specific order: V-Mix 40K (1), Magic Maze 2.0 (7), BC45K Pro (9), MO20000 Pro (8)
+  const featuredIds = ['1', '7', '9', '8'];
+  const featuredProducts = featuredIds
+    .map(id => PRODUCTS.find(p => p.id === id))
+    .filter((p): p is typeof PRODUCTS[0] => p !== undefined);
 
   // Marquee data - repeat for smooth infinite loop
   const topMarqueeItems = Array(10).fill("SUA VIBE // SEU SABOR // SEU ESTILO //");
@@ -63,7 +67,7 @@ const Home: React.FC = () => {
 
         <div className="flex flex-col md:flex-row justify-center md:justify-start items-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none text-center md:text-left animate-text-glow">
-            Últimos <br className="md:hidden"/> Lançamentos
+            Mais <br className="md:hidden"/> Vendidos
           </h2>
         </div>
         

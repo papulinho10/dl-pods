@@ -65,7 +65,13 @@ const ProductDetails: React.FC = () => {
       "Modos de Saída:",
       "Perfis de sabor descartáveis da Dinner Lady 50K:",
       "Especificações do produto:",
-      "Características do produto:"
+      "Características do produto:",
+      "Como funciona o “Dual Tank”",
+      "Autonomia e recarga",
+      "Notas importantes",
+      "quanto tempo dura um dual tank 30.000 no uso diário?",
+      "existem variações de sabores?",
+      "alguma recomendação de uso e cuidados?"
     ];
     
     // Create a regex to split the text by these keywords

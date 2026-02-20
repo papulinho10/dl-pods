@@ -76,9 +76,8 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 items-center ml-12">
-            <Link to="/" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors hover:animate-pulse">Início</Link>
-            <Link to="/shop" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors hover:animate-pulse">Loja</Link>
-            <Link to="/brands" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors hover:animate-pulse">Marcas</Link>
+            <Link to="/shop" className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors hover:animate-pulse">Catálogo</Link>
+            <button onClick={() => handleMenuClick('reviews', true)} className="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white transition-colors hover:animate-pulse">Avaliações</button>
           </div>
 
           {/* Right Icons (Instagram + Cart) */}
@@ -133,15 +132,6 @@ const Navbar: React.FC = () => {
               style={{ animationDelay: '0.2s' }}
             >
               Avaliações
-            </button>
-
-            {/* 3. CONTATO */}
-            <button 
-              onClick={() => handleMenuClick('contact', true)}
-              className="text-4xl font-black uppercase italic tracking-tighter text-white hover:text-yellow-400 transition-colors animate-street-pulse"
-              style={{ animationDelay: '0.4s' }}
-            >
-              Contato
             </button>
         </div>
         

@@ -2,7 +2,7 @@ import React from 'react';
 
 const WhatsAppButton: React.FC = () => {
   // Placeholder number for Canela/Gramado region (54)
-  const phoneNumber = "5554999999999"; 
+  const phoneNumber = "5553981169901"; 
   const message = encodeURIComponent("Olá! Vim pelo site e gostaria de saber mais sobre os produtos.");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

@@ -404,10 +404,10 @@ Especificações do Produto – SEX ADDICT BY DAN BILZERIAN S280
     longName: 'Pod Descartável Dinner Lady 50K - 50000 Puffs',
     brand: 'Dinner Lady',
     price: 250.00,
-    image: 'https://i.postimg.cc/y6pfHg7B/Dinner-Lady-50K.webp',
+    image: 'https://i.postimg.cc/j5mN1DF7/Chat-GPT-Image-20-de-fev-de-2026-02-06-47.png',
     images: [
-      'https://i.postimg.cc/y6pfHg7B/Dinner-Lady-50K.webp',
-      'https://i.postimg.cc/DytBS9W4/Dinner-Lady-50K-2.webp'
+      'https://i.postimg.cc/j5mN1DF7/Chat-GPT-Image-20-de-fev-de-2026-02-06-47.png',
+      'https://i.postimg.cc/c4QYD4MG/Chat-GPT-Image-20-de-fev-de-2026-02-08-34.png'
     ],
     flavors: [
       "Strawberry Kiwi / Cherry Ice",
@@ -494,6 +494,69 @@ Características Técnicas:
 - Boost: Até 20W
 - Norm: Até 18W
 - Soft: Até 15W`,
+    category: 'Descartáveis'
+  },
+
+  // 8. Black Sheep
+  {
+    id: '16',
+    name: 'Dual Tank 30K',
+    longName: 'Pod Descartável 30K Dual Tank - 30000 puffs - Black Sheep',
+    brand: 'Black Sheep',
+    price: 180.00, // Estimated price as it wasn't provided, adjust if needed
+    image: 'https://i.postimg.cc/SRmqkr5V/black-sheep-1.webp',
+    images: [
+      'https://i.postimg.cc/SRmqkr5V/black-sheep-1.webp',
+      'https://i.postimg.cc/mkV4D9Wr/black-sheep-2.jpg'
+    ],
+    flavors: [
+      "Fresh Mint / Grape",
+      "Strawberry Banana / Pineapple Coconut",
+      "Menthol / Mango Peach Watermelon",
+      "Fresh Mint / Watermelon Strawberry",
+      "Menthol / Watermelon Green Apple"
+    ],
+    description: `DESCRIÇÃO
+
+O Dual Tank 30.000 da Black Sheep foi pensado para quem quer muita autonomia e a liberdade de trocar de sabor sem carregar dois aparelhos. O diferencial está nos dois reservatórios independentes dentro do mesmo corpo: em segundos você alterna o líquido que está usando, mantendo toda a eletrônica no lugar. Em listagens de varejistas, o dispositivo é indicado para até 30.000 puffs, com bateria recarregável via USB-C e volume de e-liquid de aproximadamente 26 ml (valor pode variar por lote/mercado).
+
+Além da proposta de longa duração, o modelo prioriza conveniência: formato “box” ergonômico, construção robusta e, em versões recentes, tela/indicadores para acompanhar a energia. Alguns lotes citados por lojistas ainda trazem boost ou controle de intensidade, facilitando ajustar a entrega. Há também anúncios que mencionam 850 mAh de bateria, reforçando o foco em sessões extensas.
+
+Como funciona o “Dual Tank”
+
+São duas câmaras separadas para e-liquid dentro do mesmo corpo. Você escolhe qual reservatório usar conforme o momento (por exemplo, frutado ao dia e mentolado à noite), sem carregar dois descartáveis. É personalização imediata, com zero complicação.
+
+Autonomia e recarga
+
+O conjunto foi projetado para uso prolongado: 30.000 puffs estimados, bateria recarregável e tanque de alto volume. A recarga elétrica repõe energia, enquanto você consome o conteúdo dos tanques ao longo de vários dias. Resultados práticos podem variar conforme duração das tragadas, temperatura ambiente e modo selecionado (quando houver).
+
+Notas importantes
+
+- Especificações como capacidade listada do tanque, acabamento e presença de visor podem variar por lote e mercado.
+- Sempre confira a ficha do varejista para os detalhes do item que você está comprando.
+
+Em resumo, o Pod Descartável Dual Tank 30.000 da Black Sheep combina versatilidade real de sabores com autonomia elevada e recarga USB-C — uma solução única para quem quer praticidade sem abrir mão de variedade e tempo de uso.
+
+quanto tempo dura um dual tank 30.000 no uso diário?
+
+Depende do seu padrão de tragada, intervalo entre sessões e do sabor/modo utilizado. Como regra prática, usuários moderados costumam usar por vários dias/semana; pesados esgotam mais rápido.
+
+existem variações de sabores?
+
+Sim, a Black Sheep oferece múltiplas combinações (por exemplo, uva + menthol; morango + kiwi; etc.), e cada varejista pode ter um sortimento diferente.
+
+alguma recomendação de uso e cuidados?
+
+Mantenha o dispositivo entre 20–25 °C, evite quedas e não tampe as entradas de ar. Carregue com cabos/ fontes confiáveis USB-C. Descarte conforme regras locais para eletrônicos/baterias.
+
+ESPECIFICAÇÕES
+
+- Teor de nicotina: 50 mg/mL;
+- Capacidade de puffs: 30.000 puffs;
+- Capacidade de líquido: 26 mL;
+- Capacidade da bateria: 850 mAh
+- É um descartável, jogue-o fora após o uso
+- É vendido por unidade individual`,
     category: 'Descartáveis'
   }
 ];

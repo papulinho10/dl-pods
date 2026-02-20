@@ -4,9 +4,11 @@ import ProductCard from '../components/ProductCard';
 import { PRODUCTS } from '../constants';
 import { ArrowLeft, MessageCircle } from 'lucide-react';
 
+import Footer from '../components/Footer';
+
 const Shop: React.FC = () => {
   const location = useLocation();
-  const WHATSAPP_NUMBER = "5554981557945";
+  const WHATSAPP_NUMBER = "5553981169901";
   
   // Simple query parsing for ?brand=Name
   const queryParams = new URLSearchParams(location.search);
@@ -31,7 +33,7 @@ const Shop: React.FC = () => {
       </div>
 
       {/* --- MAIN CONTENT --- */}
-      <div className="relative z-10 pt-24 md:pt-32 pb-20 flex-grow">
+      <div className="relative z-10 pt-20 md:pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Back Button */}
@@ -107,6 +109,7 @@ const Shop: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

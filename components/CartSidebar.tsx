@@ -12,7 +12,7 @@ const CartSidebar: React.FC = () => {
   // Constants
   const SHIPPING_GRAMADO = 20;
   const SHIPPING_CANELA = 10;
-  const WHATSAPP_NUMBER = "5554981557945"; // Número atualizado
+  const WHATSAPP_NUMBER = "5553981169901"; // Número atualizado
 
   // Prevent background scrolling when cart is open
   React.useEffect(() => {
