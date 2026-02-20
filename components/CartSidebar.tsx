@@ -54,7 +54,7 @@ const CartSidebar: React.FC = () => {
       deliveryInfo = "📍 *Método:* Vou Buscar (Retirada)";
     } else {
       const cityName = deliveryCity === 'gramado' ? 'Gramado' : 'Canela';
-      deliveryInfo = `🚚 *Método:* Entrega em ${cityName}\n💵 *Frete:* R$ ${shippingCost.toFixed(2)}`;
+      deliveryInfo = `🚚 *Método:* Entrega em ${cityName}\n💵 *Frete:* A Combinar`;
     }
 
     // Construct final message
@@ -66,7 +66,7 @@ ${itemsList}
 💰 *Subtotal:* R$ ${cartTotal.toFixed(2)}
 ${deliveryInfo}
 
-✅ *TOTAL FINAL: R$ ${finalTotal.toFixed(2)}*
+✅ *TOTAL FINAL: R$ ${cartTotal.toFixed(2)}*
 ---------------------------
 Aguardo confirmação!`;
 
