@@ -4,8 +4,6 @@ import ProductCard from '../components/ProductCard';
 import { PRODUCTS } from '../constants';
 import { ArrowLeft, MessageCircle } from 'lucide-react';
 
-import Footer from '../components/Footer';
-
 const Shop: React.FC = () => {
   const location = useLocation();
   const WHATSAPP_NUMBER = "5553981169901";
@@ -25,7 +23,7 @@ const Shop: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-street-black relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-street-black relative overflow-hidden">
       
       {/* --- BACKGROUND LAYERS --- */}
       <div className="fixed inset-0 z-0 bg-street-black">
@@ -33,7 +31,7 @@ const Shop: React.FC = () => {
       </div>
 
       {/* --- MAIN CONTENT --- */}
-      <div className="relative z-10 pt-20 md:pt-24">
+      <div className="relative z-10 pt-20 md:pt-24 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Back Button */}
@@ -109,7 +107,6 @@ const Shop: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
