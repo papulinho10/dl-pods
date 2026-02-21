@@ -423,19 +423,6 @@ Desfrute do Dinner Lady 50K Disposable com dois sabores e experimente uma varied
 
 Além disso, cada Dinner Lady 50000 descartável combina dois sabores, oferecendo uma generosa capacidade de 30 ml. Ele vem pré-carregado com 5% de sal de nicotina e proporciona 50.000 deliciosas vaporizações. Com seu design giratório de 180° para troca de sabor, o Dinner Lady 50K permite que você alterne instantaneamente entre dois sabores, simplesmente girando o bocal até a metade. Desfrute da máxima satisfação com Dinner Lady.
 
-Perfis de sabor descartáveis da Dinner Lady 50K:
-
-- Hortelã Azul e Hortelã de Miami
-- Morango congelado e melancia congelada
-- Raspadinha de pêssego azul e picolé de laranja com creme
-- Morango e Uva Efervescentes
-- Doce de Frutas Vermelhas e Gelo de Goma Azul
-- Melão Supremo e Morango Supremo
-- Pó rosa azedo e abacaxi com manga azeda
-- Refrigerante de Uva e Refrigerante de Morango
-- Cereja com Frutas Vermelhas e Limão & Laranja com Frutas Vermelhas e Limão
-- Manga mexicana e maracujá com abacaxi e goiaba
-
 Especificações do produto:
 
 - Capacidade do vaporizador: até 50.000 tragadas
@@ -526,9 +513,7 @@ Como funciona o “Dual Tank”
 
 São duas câmaras separadas para e-liquid dentro do mesmo corpo. Você escolhe qual reservatório usar conforme o momento (por exemplo, frutado ao dia e mentolado à noite), sem carregar dois descartáveis. É personalização imediata, com zero complicação.
 
-Autonomia e recarga
-
-O conjunto foi projetado para uso prolongado: 30.000 puffs estimados, bateria recarregável e tanque de alto volume. A recarga elétrica repõe energia, enquanto você consome o conteúdo dos tanques ao longo de vários dias. Resultados práticos podem variar conforme duração das tragadas, temperatura ambiente e modo selecionado (quando houver).
+**Autonomia e recarga** O conjunto foi projetado para uso prolongado: 30.000 puffs estimados, bateria recarregável e tanque de alto volume. A recarga elétrica repõe energia, enquanto você consome o conteúdo dos tanques ao longo de vários dias. Resultados práticos podem variar conforme duração das tragadas, temperatura ambiente e modo selecionado (quando houver).
 
 Notas importantes
 

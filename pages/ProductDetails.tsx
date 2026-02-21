@@ -76,7 +76,9 @@ const ProductDetails: React.FC = () => {
     
     // Create a regex to split the text by these keywords
     // We escape special characters like '?' to avoid regex errors
-    const safeKeywords = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    // Sort by length descending to ensure longer phrases are matched first (e.g. "Autonomia e recarga" before "Autonomia")
+    const sortedKeywords = [...keywords].sort((a, b) => b.length - a.length);
+    const safeKeywords = sortedKeywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
     const regex = new RegExp(`(${safeKeywords.join('|')})`, 'g');
     const parts = text.split(regex);
 
