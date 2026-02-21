@@ -30,7 +30,6 @@ export const PRODUCTS: Product[] = [
       "Grape Ice / Watermelon Ice",
       "Apple Ice / Strawberry Watermelon",
       "Mighty Melon / Menthol",
-      "Passion Fruit Sour Kiwi / Pineapple Ice",
       "Watermelon Ice / Cherry Ice"
     ],
     description: `DESCRIÇÃO
@@ -79,9 +78,7 @@ ESPECIFICAÇÕES
     ],
     flavors: [
       "Banana Coconut Water",
-      "Strawberry Banana",
-      "Banana Ice",
-      "Blueberry Strawberry Coconut"
+      "Strawberry Banana"
     ],
     description: `DESCRIÇÃO
 
