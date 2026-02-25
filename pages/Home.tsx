@@ -58,11 +58,22 @@ const Home: React.FC = () => {
 
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Nicotine Warning */}
-        <div className="w-full border border-white/10 bg-white/5 p-4 md:p-6 mb-12 text-center backdrop-blur-sm animate-neon-border">
+        <div className="w-full border border-white/10 bg-white/5 p-4 md:p-6 mb-8 text-center backdrop-blur-sm animate-neon-border">
           <p className="text-gray-400 text-[10px] md:text-sm font-mono uppercase tracking-[0.15em] font-bold">
             <span className="text-yellow-500 mr-2 md:mr-3 animate-pulse">⚠️ AVISO</span>
             Todos os produtos contêm nicotina
           </p>
+        </div>
+
+        {/* Catalog Button */}
+        <div className="flex justify-center mb-12">
+          <Link to="/shop" className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-black tracking-widest text-white transition duration-300 ease-out border-2 border-white/30 rounded-sm shadow-md group animate-neon-border">
+            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-yellow-400 group-hover:translate-x-0 ease">
+              <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </span>
+            <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease uppercase text-sm">Ver Catálogo</span>
+            <span className="relative invisible text-sm uppercase">Ver Catálogo</span>
+          </Link>
         </div>
 
         <div className="flex flex-col md:flex-row justify-center md:justify-start items-center mb-8 md:mb-12">

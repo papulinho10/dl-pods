@@ -20,6 +20,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     navigate(`/product/${product.id}`);
   };
 
+  const isSoldOut = product.brand === 'Lost Mary' || product.name.includes('Spaceman');
+
   return (
     <Link 
       to={`/product/${product.id}`} 
@@ -40,9 +42,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <img 
               src={product.image} 
               alt={product.name} 
-              className="w-full h-full object-contain p-6 md:p-8 animate-street-pulse drop-shadow-xl"
+              className={`w-full h-full object-contain p-6 md:p-8 animate-street-pulse drop-shadow-xl ${isSoldOut ? 'grayscale opacity-50' : ''}`}
               style={{ animationDelay }}
             />
+            
+            {/* Sold Out Overlay */}
+            {isSoldOut && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-20">
+                <span className="text-red-500 font-black text-2xl uppercase tracking-widest border-4 border-red-500 px-4 py-2 transform -rotate-12">
+                  ESGOTADO
+                </span>
+              </div>
+            )}
             
             {/* Corner Accents */}
             <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/30 group-hover:border-yellow-400 transition-colors"></div>

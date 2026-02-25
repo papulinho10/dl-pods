@@ -29,7 +29,8 @@ const ProductDetails: React.FC = () => {
   }
 
   const hasFlavors = product.flavors && product.flavors.length > 0;
-  const canAddToCart = !hasFlavors || selectedFlavor !== null;
+  const isSoldOut = product.brand === 'Lost Mary' || product.name.includes('Spaceman');
+  const canAddToCart = !isSoldOut && (!hasFlavors || selectedFlavor !== null);
 
   // Custom parser for Bold Headers
   const renderDescription = (text: string) => {
@@ -129,8 +130,15 @@ const ProductDetails: React.FC = () => {
                  <img 
                    src={activeImage || product.image} 
                    alt={product.name} 
-                   className="w-full h-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] animate-street-pulse"
+                   className={`w-full h-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] animate-street-pulse ${isSoldOut ? 'grayscale opacity-50' : ''}`}
                  />
+                 {isSoldOut && (
+                    <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+                      <span className="text-red-500 font-black text-4xl md:text-6xl uppercase tracking-widest border-8 border-red-500 px-6 py-4 transform -rotate-12 bg-black/80 backdrop-blur-sm">
+                        ESGOTADO
+                      </span>
+                    </div>
+                 )}
                </div>
             </div>
 
@@ -225,7 +233,7 @@ const ProductDetails: React.FC = () => {
                         }`}
                     >
                         <span className="relative z-10">
-                            {hasFlavors && !selectedFlavor ? "Selecione um Sabor" : "Adicionar ao Carrinho"}
+                            {isSoldOut ? "ESGOTADO" : (hasFlavors && !selectedFlavor ? "Selecione um Sabor" : "Adicionar ao Carrinho")}
                         </span>
                         {canAddToCart && (
                             <div className="absolute inset-0 bg-yellow-400 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
