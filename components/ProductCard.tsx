@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     navigate(`/product/${product.id}`);
   };
 
-  const isSoldOut = product.brand === 'Lost Mary' || product.name.includes('Spaceman');
+  const isSoldOut = product.brand === 'Lost Mary' || product.name.includes('Spaceman') || product.name === 'V300';
 
   return (
     <Link 

@@ -29,7 +29,7 @@ const ProductDetails: React.FC = () => {
   }
 
   const hasFlavors = product.flavors && product.flavors.length > 0;
-  const isSoldOut = product.brand === 'Lost Mary' || product.name.includes('Spaceman');
+  const isSoldOut = product.brand === 'Lost Mary' || product.name.includes('Spaceman') || product.name === 'V300';
   const canAddToCart = !isSoldOut && (!hasFlavors || selectedFlavor !== null);
 
   // Custom parser for Bold Headers
