@@ -23,10 +23,7 @@ export const PRODUCTS: Product[] = [
     flavors: [
       "Icy Mint / Peach Grape",
       "Orange Ice / Strawberry",
-      "Peach Watermelon / Mango Ice",
-      "Strawberry Mango Ice / Banana Ice",
       "Blueberry Ice / Raspberry BlackBerry",
-      "Watermelon Grape Ice / Açaí Ice",
       "Grape Ice / Watermelon Ice",
       "Apple Ice / Strawberry Watermelon",
       "Mighty Melon / Menthol",
@@ -496,7 +493,6 @@ Características Técnicas:
     flavors: [
       "Fresh Mint / Grape",
       "Strawberry Banana / Pineapple Coconut",
-      "Menthol / Mango Peach Watermelon",
       "Fresh Mint / Watermelon Strawberry",
       "Menthol / Watermelon Green Apple"
     ],
